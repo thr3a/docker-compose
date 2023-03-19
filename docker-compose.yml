@@ -4,9 +4,9 @@ services:
     image: nginx
     ports:
       - "80:80"
-    # volumes:
-    #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    #   - /var/log/nginx:/var/log/nginx
+    volumes:
+      - ./nginx/server.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./letsencrypt/etc:/etc/letsencrypt:ro
     restart: always
     environment:
       TZ: Asia/Tokyo
