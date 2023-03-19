@@ -14,7 +14,8 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            whoami
-            ls -al
-      - name: Checkout repository
-        uses: actions/checkout@v3
+            cd /home/thr3a/docker-compose
+            docker compose pull
+            docker compose build
+            docker compose down
+            docker compose up
