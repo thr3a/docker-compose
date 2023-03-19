@@ -8,3 +8,15 @@ services:
     #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
     #   - /var/log/nginx:/var/log/nginx
     restart: always
+    environment:
+      TZ: Asia/Tokyo
+  certbot:
+    image: certbot/dns-route53
+    volumes:
+      - "./etc/letsencrypt:/etc/letsencrypt"
+      - "./var/lib/letsencrypt:/var/lib/letsencrypt"
+      - ./aws-credentials:/root/.aws/config:ro
+      - letsencrypt
+    command: certonly --dns-route53 --agree-tos -m amanekey@gmail.com -d *.turai.work -d turai.work
+    environment:
+      TZ: Asia/Tokyo
