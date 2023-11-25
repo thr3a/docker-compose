@@ -23,3 +23,9 @@ services:
     restart: always
     environment:
       TZ: Asia/Tokyo
+  # s3s:
+  #   image: thr3a/s3s
+  #   volumes:
+  #     - ./s3s/config.txt:/s3s/config.txt
+  #   restart: always
+  #   entrypoint: "/bin/sh -c 'trap exit TERM; while :; do python s3s.py -r -nsr; sleep 60 & wait $${!}; done;'"
